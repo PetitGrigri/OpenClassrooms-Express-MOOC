@@ -14,6 +14,7 @@ A simple repository which is created to fallow the [MOOC about express on OpenCl
 - 1.5 : Create our first route (all methods accepted)
 - 1.6 : Handdle Post and Get
 - 2.1 : Add MongoDB, Mongo-express (with docker-compose) and mongoose
+- 2.2 : Add Things model 
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
