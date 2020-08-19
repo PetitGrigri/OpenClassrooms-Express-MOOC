@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 
 // Prevent CORS errors on all request
@@ -9,8 +11,16 @@ app.use((req, res, next) => {
     next();
 });
 
-// Handle request to "/api/stuff"
-app.use('/api/stuff', (req, res, next) => {
+app.use(bodyParser.json());
+
+// Handle GET request to "/api/stuff"
+app.post('/api/stuff', (req, res, next) => {
+    console.log(req.body);
+    res.status(201).end()
+});
+
+// Handle GET request to "/api/stuff"
+app.get('/api/stuff', (req, res, next) => {
     const stuff = [
       {
         _id: 'oeihfzeoi',
