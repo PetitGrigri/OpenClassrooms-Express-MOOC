@@ -15,6 +15,7 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - 1.6 : Handdle Post and Get
 - 2.1 : Add MongoDB, Mongo-express (with docker-compose) and mongoose
 - 2.2 : Add Thing model 
+- 2.3 : The API can create Thing, Get all Things on get a specific Thing
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
