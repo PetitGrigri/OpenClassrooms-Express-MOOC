@@ -20,6 +20,7 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - 2.5 : Add CRUD for Products (Test)
 - 3.1.1 : Cleaning the structure, step 1, all route inside app go inside routes folder
 - 3.1.2 : Cleaning the structure, step 2, all business logic move inside controllers folder
+- 3.2 : Add User model
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
@@ -27,3 +28,4 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - nodemon (npm install -g nodemon)
 - body-parser (npm install --save body-parser)
 - mongoose (npm install --save mongoose)
+- mongoose-unique-validator (npm install --save mongoose-unique-validator)
