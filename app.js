@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const routerStuff = require('./routes/stuff');
 const routerProducts = require('./routes/products');
+const routerUsers = require('./routes/user');
 
 
 // Mongoose connection to MongoDB
@@ -32,6 +33,6 @@ app.use(bodyParser.json());
 // Handle specific routes
 app.use('/api/stuff', routerStuff);
 app.use('/api/products', routerProducts);
-
+app.use('/api/auth', routerUsers);
 
 module.exports = app;

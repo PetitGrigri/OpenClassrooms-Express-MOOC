@@ -21,6 +21,7 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - 3.1.1 : Cleaning the structure, step 1, all route inside app go inside routes folder
 - 3.1.2 : Cleaning the structure, step 2, all business logic move inside controllers folder
 - 3.2 : Add User model
+- 3.3 : Add user files structures (routes, controllers) + the API can create a User
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
@@ -29,3 +30,4 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - body-parser (npm install --save body-parser)
 - mongoose (npm install --save mongoose)
 - mongoose-unique-validator (npm install --save mongoose-unique-validator)
+- bcrypt (npm install --save bcrypt)
