@@ -17,6 +17,7 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - 2.2 : Add Thing model 
 - 2.3 : The API can create Thing, Get all Things on get a specific Thing
 - 2.4 : The API can delete and update Thing
+- 2.5 : Add CRUD for Products (Test)
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
