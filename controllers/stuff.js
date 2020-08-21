@@ -1,4 +1,5 @@
 const Thing = require('../models/Thing');
+const fs = require('fs');
 
 exports.createThing = (req, res, next) => {
   // The body contains thing now, not each params
@@ -42,7 +43,14 @@ exports.updateThing = (req, res, next) => {
 };
 
 exports.deleteThing = (req, res, next) => {
-  Thing.deleteOne({ _id: req.params.id})
-    .then(() => res.status(204).json({ message: "deleted" }))
-    .catch(err => res.status(404).json({err}))
+  const thingToDelete = Thing.findById(req.params.id)
+    .then(thing => {
+      const filename = thing.imageUrl.split("/images/")[1];
+      fs.unlink(`images/${filename}`, err => {
+        Thing.deleteOne({ _id: req.params.id})
+          .then(() => res.status(204).json({ message: "deleted" }))
+          .catch(err => res.status(404).json({err}));
+      })
+    })
+    .catch(err => res.status(500).json({err}));
 };

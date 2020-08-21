@@ -26,6 +26,7 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - 3.5 : Update authentication logic (create a jwt token)
 - 4.1 : Add multer middleware
 - 4.2 : Handle an image inside form
+- 4.3 : Delete Things's image when deleted
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
