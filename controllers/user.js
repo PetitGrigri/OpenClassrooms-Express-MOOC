@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
@@ -33,7 +34,11 @@ exports.login = (req, res, next) => {
           }
           res.status(200).json({
             userId: user._id,
-            token: "NOT YET CREATED"
+            token: jwt.sign(
+              {userId: user._id},
+              'MY_INCREDIBLE_FAKRE_PRIVATE_KEY',
+              { expiresIn: "24h" }
+            )
           })
         })
         .catch(err => res.status(500).json({ err }))
