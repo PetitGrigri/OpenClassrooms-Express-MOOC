@@ -2,19 +2,12 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 exports.signup = (req, res, next) => {
-  console.log(req.body);
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
-      console.log(hash);
-      console.log({
-        email: req.body.email,
-        password: hash
-      });
       const user = new User({
         email: req.body.email,
         password: hash
       });
-      console.log(user);
       user.save()
         .then(user => res.status(201).json({message: "Created !"}))
         .catch(err => res.status(400).json({err}));
@@ -24,5 +17,26 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-
+  User.findOne({ email: req.body.email })
+    .then(user => {
+      if (!user) {
+        res.status(404).json({
+          message: "User not found"
+        })
+      }
+      bcrypt.compare(req.body.password, user.password)
+        .then(valid => {
+          if (!valid) {
+            res.status(401).json({
+              message: "Invalid password !"
+            })
+          }
+          res.status(200).json({
+            userId: user._id,
+            token: "NOT YET CREATED"
+          })
+        })
+        .catch(err => res.status(500).json({ err }))
+    })
+    .catch(err => res.status(500).json({ err }))
 };

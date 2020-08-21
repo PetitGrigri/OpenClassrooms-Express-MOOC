@@ -22,6 +22,7 @@ A simple repository which is created to follow the [MOOC about express on OpenCl
 - 3.1.2 : Cleaning the structure, step 2, all business logic move inside controllers folder
 - 3.2 : Add User model
 - 3.3 : Add user files structures (routes, controllers) + the API can create a User
+- 3.4 : Add authentication logic (no token yet)
 
 ## Dependencies
 - angular cli (npm install -g @angular/cli)
