@@ -15,6 +15,12 @@ mongoose.connect('mongodb://root:example@localhost:27017',{
 })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+  
+/**
+ * Remove deprecation warning
+ * @see https://mongoosejs.com/docs/deprecations.html#-ensureindex-
+ */
+mongoose.set('useCreateIndex', true);
 
 const app = express();
 
