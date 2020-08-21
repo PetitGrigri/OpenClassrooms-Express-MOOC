@@ -7,11 +7,9 @@ const MIMTES_TYPES = {
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    console.log({req, file, callback});
-    callback(null, 'images');
+    callback(null, 'images'); // the first parameter is error (here null)
   },
   filename: (req, file, callback) => {
-    console.log({req, file, callback});
     const name = file.originalname.split(' ').join('-');
     const extension = MIMTES_TYPES[file.mimetype];
     callback(null, `${name}-${Date.now()}.${extension}`);

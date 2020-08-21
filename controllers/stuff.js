@@ -1,10 +1,13 @@
 const Thing = require('../models/Thing');
 
 exports.createThing = (req, res, next) => {
-  delete req.body._id;
+  // The body contains thing now, not each params
+  const thingObject = JSON.parse(req.body.thing);
+  delete thingObject._id;
 
   const thing = new Thing({
-    ...req.body
+    ...thingObject,
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   })
 
   thing.save()
@@ -25,7 +28,15 @@ exports.getThing = (req, res, next) => {
 };
 
 exports.updateThing = (req, res, next) => {
-  Thing.updateOne({ _id: req.params.id}, { ...req.body, _id: req.params.id })
+  const thingObject = !req.file 
+    ? { ...req.body }
+    : { 
+        ...JSON.parse(req.body.thing),
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+      };
+
+
+  Thing.updateOne({ _id: req.params.id}, { ...thingObject, _id: req.params.id })
     .then(thing => res.status(200).json(thing))
     .catch(err => res.status(404).json({err}))
 };

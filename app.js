@@ -6,6 +6,7 @@ const routerStuff = require('./routes/stuff');
 const routerProducts = require('./routes/products');
 const routerUsers = require('./routes/user');
 
+const path = require('path');
 
 // Mongoose connection to MongoDB
 mongoose.connect('mongodb://root:example@localhost:27017',{ 
@@ -36,9 +37,14 @@ app.use((req, res, next) => {
 // Use body parser for request with json content in the body
 app.use(bodyParser.json());
 
+// Handle requests to our images folder
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 // Handle specific routes
 app.use('/api/stuff', routerStuff);
 app.use('/api/products', routerProducts);
 app.use('/api/auth', routerUsers);
+
+
 
 module.exports = app;
